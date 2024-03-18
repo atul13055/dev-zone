@@ -1,0 +1,9 @@
+<% if user && user.skills.present? %>
+  <p class="lead" id="member-skill">
+    <% user.skills.sort.each do |skill| %>
+      <%= skill %><br>
+    <% end %>
+  </p>
+<% else %>
+  <p class="lead" id="member-skill">No skills available</p>
+<% end %>

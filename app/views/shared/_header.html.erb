@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color: black">
+	<div class="container">
+		<%= link_to(image_tag("logo.png", alt: "Logo", size: "60x40"), root_path, class: "navbar-brand") %>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			<ul class="navbar-nav">
+				</li>
+				<% if user_signed_in? %>
+				<li class="nav-item">
+					<%= link_to "My Profile", member_path(current_user), class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to "My Network", connections_path, class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure want to sign out?"}, class: "nav-link" %>
+				</li>
+				<% else %>
+				<li class="nav-item">
+					<%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+				</li>
+				<%end%>
+				<li class="nav-item">
+					<a class="nav-link" href="#">About</a>
+				</li>
+			</ul>
+		</div>
+		<% if @q.present? %>
+		<div class="d-flex justify-content-center flex-grow-1">
+			<form class="d-flex" action="<%= root_path %>" method="get">
+				<%= search_form_for @q, url: root_path, method: :get, html: { class: 'form-inline my-2 my-lg-0' } do |f| %>
+				<%= f.search_field :country_or_city_cont, class: 'form-control me-2', placeholder: 'Search by country or city', aria: { label: 'Search' } %>
+				<%= f.submit 'Search', class: 'btn btn-outline-light' %>
+				<% end %>
+			</form>
+		</div>
+		<% end %>
+	</div>
+</nav>

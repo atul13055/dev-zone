@@ -1,0 +1,21 @@
+<div class="col-lg-10 mx-auto mt-5">
+	<div class="row mt-4 mb-4">
+		<% @users.each do |user| %>
+		<div class="col-lg-3 mb-3 mt-3">
+			<div class="card text-center shadow" style="min-height: 400px;">
+				<div class="card-body d-flex flex-column align-items-center">
+					<%= image_tag(user.image.present? ? user.image : "profile.jpg", style: "width: 150px; height: 150px; border-radius: 50%; border: 2px solid #0d6efd; border-color: black;", class: 'mb-3') %>
+					<div class="user-info" data-controller="user-name">
+						<h5 data-user-name-target='name' data-action="click->user-name#getUserName"><%= user.name %></h5>
+						<p class="lead", style="font-size: 18px;"><%= user.profile_title %></p>
+						<small class="text-primary"><span><%= user.country_flag %></span><%= user.country%></small><br>
+					</div>
+					<div class="mt-auto">
+						<%= link_to "View Profile", member_path(user), class: "btn btn-dark mt-3"%>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
