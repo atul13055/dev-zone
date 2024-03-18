@@ -8,8 +8,8 @@
 
 ## Installation
 ```
-git clone https://github.com/appsimpactacademy/developers-community.git
-cd developers-community
+git clone https://github.com/atul13055/dev-zone/pull/new/master
+cd dev-zone
 bundle install
 ```
 ## Database setup
@@ -35,9 +35,3 @@ yarn build:css
 rails server
 ```
 And then visit the http://localhost:3000
-
-## Executing features specs:
-```
-bundle exec rspec spec/features/
-```
-* You need to install the chromedriver first to stimulate the feature specs.
